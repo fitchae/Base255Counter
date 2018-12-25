@@ -1,0 +1,6 @@
+.centerIt{
+    padding-top: 5vh;
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+}
