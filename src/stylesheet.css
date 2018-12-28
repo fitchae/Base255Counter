@@ -1,6 +1,19 @@
+* {
+    font-family: "Courier New";
+    font-weight: bold;
+}
 .centerIt{
     padding-top: 5vh;
     display: flex;
     justify-content: center;
     vertical-align: middle;
+}
+#centerTitle{
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+}
+#numberValue{
+    width: 150px;
+    text-align: center;
 }

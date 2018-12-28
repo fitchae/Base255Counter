@@ -49,8 +49,9 @@ class Timer extends React.Component {
 	render() {
 		return(
 		<div>
+			<h1 id="centerTitle">Base X Counter</h1>
 			<div class="centerIt" id="number">
-			<input type="text" value={this.state.integer_value} onChange={this.handleDecimalChange} />
+			<input class="form-control" id="numberValue" type="text" value={this.state.integer_value} onChange={this.handleDecimalChange} />
 			</div>
 			<div class="row">
 			<div class="centerIt col-sm-2" id="q1">
@@ -77,7 +78,7 @@ class Timer extends React.Component {
 
 			</div>
 			<div class="centerIt" id="buttons">
-			<button onClick={this.handleStartPause}>{this.state.button_title}</button>
+			<button class="btn btn-success" onClick={this.handleStartPause}>{this.state.button_title}</button>
 			</div>
 		</div>
 		);
