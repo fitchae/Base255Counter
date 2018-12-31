@@ -142,7 +142,6 @@ class App extends React.Component {
 
 	resetThenSet(id, key) {
     let temp = JSON.parse(JSON.stringify(this.state[key]))
-		console.log("temp: " + JSON.stringify(temp))
     temp.forEach(item => item.selected = false);
     temp[id].selected = true;
     this.setState({
@@ -155,8 +154,6 @@ class App extends React.Component {
 	}
 
 	format(number, base) {
-		console.log("number: " + number)
-		console.log("base: " + base)
 		if (base === 16)
 			return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f'][number];
 		else
