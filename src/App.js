@@ -165,39 +165,79 @@ class App extends React.Component {
 	}
 
 	render() {
+		var base = parseInt(this.state.selected_base, 10)
+		var value = parseInt(this.state.integer_value, 10)
+		var q1 = ((value/Math.pow(base, 3)) % base);
+		var q2 = ((value/Math.pow(base, 2)) % base);
+		var q3 = ((value/Math.pow(base, 1)) % base);
+		var q4 = ((value/base, 3) % base);
+
+		/*
+		console.log("q1:" + q1)
+		console.log("q2:" + q2)
+		console.log("q3:" + q3)
+		console.log("q4:" + q4)
+		*/
+		/*
+		 * This is to correct for the absurd behavior
+		 * of parseInt
+		 */
+		if (q1 < 1.0) {
+			q1 = 0;
+		}
+		if (q2 < 1.0) {
+			q2 = 0;
+		}
+		if (q3 < 1.0) {
+			q3 = 0;
+		}
+		if (q4 < 1.0) {
+			q4 = 0;
+		}
+		/*
+		console.log("q1:" + q1)
+		console.log("q2:" + q2)
+		console.log("q3:" + q3)
+		console.log("q4:" + q4)
+		*/
+		q1 = parseInt(q1, 10);
+		q2 = parseInt(q2, 10);
+		q3 = parseInt(q3, 10);
+		q4 = parseInt(q4, 10);
+
 		return(
 		<div>
 			<h1 id="centerTitle">Base {this.state.selected_base} Counter</h1>
 			<div class="centerIt" id="number">
 			<input class="form-control" id="numberValue" type="text" value={this.state.integer_value} onChange={this.handleDecimalChange} />
-/*		I'd like a newline here. */
+{/*		I'd like a newline here. */}
 			Base: <Dropdown
             list={this.state.base}
             resetThenSet={this.resetThenSet}/>
-/*		I'd like a newline here. */
+{/*		I'd like a newline here. */}
 			<button class="btn btn-success" onClick={this.handleStartPause}>{this.state.button_title}</button>
 			</div>
 			<div class="row">
 			<div class="centerIt col-sm-2" id="q1">
-			<p>{ this.format(parseInt((this.state.integer_value / Math.pow(this.state.selected_base, 3)) % this.state.selected_base, 10), parseInt(this.state.selected_base, 10)) }</p>
+			<p>{q1}</p>
 			</div>
 			<div class="centerIt col-sm-1">
 			.
 			</div>
 			<div class="centerIt col-sm-2" id="q2">
-			<p>{ this.format(parseInt((this.state.integer_value / Math.pow(this.state.selected_base, 2)) % this.state.selected_base, 10), parseInt(this.state.selected_base, 10)) }</p>
+			<p>{q2}</p>
 			</div>
 			<div class="centerIt col-sm-1">
 			    .
 			</div>
 			<div class="centerIt col-sm-2" id="q3">
-			<p>{ this.format(parseInt((this.state.integer_value / Math.pow(this.state.selected_base, 1)) % this.state.selected_base, 10), parseInt(this.state.selected_base, 10)) }</p>
+			<p>{q3}</p>
 			</div>
 			<div class="centerIt col-sm-1">
 			    .
 			</div>
 			<div class="centerIt col-sm-2" id="q4">
-			<p>{this.format(this.state.integer_value % this.state.selected_base, parseInt(this.state.selected_base, 10))}</p>
+			<p>{q4}</p>
 			</div>
 
 			</div>
