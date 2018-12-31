@@ -75,7 +75,7 @@ class App extends React.Component {
 		super(props)
 		this.state = {
 			integer_value: 250,
-			button_title: "Start",
+			button_title: "Start Counting",
 			running: false,
 			selected_base: 256,
 			base: [
@@ -122,14 +122,14 @@ class App extends React.Component {
 			this.setState({
 				integer_value: this.state.integer_value,
 				running: false,
-				button_title: "Start",
+				button_title: "Start Counting",
 			});
 			clearInterval(this.intervalHandle);
 		} else {
 			this.setState({
 				integer_value: this.state.integer_value,
 				running: true,
-				button_title: "Pause",
+				button_title: "Pause Counting",
 			});
 			this.intervalHandle = setInterval(this.handleInterval, 1000);
 		}
@@ -209,13 +209,12 @@ class App extends React.Component {
 		<div>
 			<h1 id="centerTitle">Base {this.state.selected_base} Counter</h1>
 			<div class="centerIt" id="number">
-			<input class="form-control" id="numberValue" type="text" value={this.state.integer_value} onChange={this.handleDecimalChange} />
+			Decimal <input class="form-control" id="numberValue" type="text" value={this.state.integer_value} onChange={this.handleDecimalChange} />
 {/*		I'd like a newline here. */}
-			Base: <Dropdown
+			in base <Dropdown
             list={this.state.base}
             resetThenSet={this.resetThenSet}/>
-{/*		I'd like a newline here. */}
-			<button class="btn btn-success" onClick={this.handleStartPause}>{this.state.button_title}</button>
+{/*		I'd like a newline here. */} is
 			</div>
 			<div class="row">
 			<div class="centerIt col-sm-2" id="q1">
@@ -242,6 +241,7 @@ class App extends React.Component {
 
 			</div>
 			<div class="centerIt" id="buttons">
+			<button class="btn btn-success" onClick={this.handleStartPause}>{this.state.button_title}</button>
 			</div>
 		</div>
 		);
