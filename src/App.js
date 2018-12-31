@@ -74,7 +74,7 @@ class App extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			integer_value: 3,
+			integer_value: 250,
 			button_title: "Start",
 			running: false,
 			selected_base: 256,
