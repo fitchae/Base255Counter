@@ -135,8 +135,12 @@ class App extends React.Component {
 		}
 	}	
 	handleInterval() {
+		var current_value = 0;
+		if (this.state.integer_value !== '') {
+			current_value = parseInt(this.state.integer_value,10);
+		}
 		this.setState({
-			integer_value: parseInt(this.state.integer_value,10) + 1
+			integer_value: current_value + 1
 		})
 	}
 
