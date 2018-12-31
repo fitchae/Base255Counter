@@ -74,7 +74,7 @@ class App extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			integer_value: 65874,
+			integer_value: 3,
 			button_title: "Start",
 			running: false,
 			selected_base: 256,
@@ -170,7 +170,7 @@ class App extends React.Component {
 		var q1 = ((value/Math.pow(base, 3)) % base);
 		var q2 = ((value/Math.pow(base, 2)) % base);
 		var q3 = ((value/Math.pow(base, 1)) % base);
-		var q4 = ((value/base, 3) % base);
+		var q4 = (value % base);
 
 		/*
 		console.log("q1:" + q1)
@@ -219,25 +219,25 @@ class App extends React.Component {
 			</div>
 			<div class="row">
 			<div class="centerIt col-sm-2" id="q1">
-			<p>{q1}</p>
+			<p>{this.format(q1, base)}</p>
 			</div>
 			<div class="centerIt col-sm-1">
 			.
 			</div>
 			<div class="centerIt col-sm-2" id="q2">
-			<p>{q2}</p>
+			<p>{this.format(q2, base)}</p>
 			</div>
 			<div class="centerIt col-sm-1">
 			    .
 			</div>
 			<div class="centerIt col-sm-2" id="q3">
-			<p>{q3}</p>
+			<p>{this.format(q3, base)}</p>
 			</div>
 			<div class="centerIt col-sm-1">
 			    .
 			</div>
 			<div class="centerIt col-sm-2" id="q4">
-			<p>{q4}</p>
+			<p>{this.format(q4, base)}</p>
 			</div>
 
 			</div>
