@@ -75,7 +75,8 @@ class App extends React.Component {
 		super(props)
 		this.state = {
 			integer_value: 250,
-			button_title: "Start Counting",
+			start_pause_button_title: "Start Counting",
+			reset_button_title: "Reset",
 			running: false,
 			selected_base: 256,
 			base: [
@@ -105,15 +106,22 @@ class App extends React.Component {
 		this.intervalHandle;
 		this.handleInterval = this.handleInterval.bind(this);
 		this.handleStartPause = this.handleStartPause.bind(this);
+		this.handleReset = this.handleReset.bind(this);
 		this.handleDecimalChange = this.handleDecimalChange.bind(this);
 		this.resetThenSet = this.resetThenSet.bind(this);
+	}
+
+	handleReset() {
+		this.setState({
+			integer_value: 250
+		})
 	}
 
 	handleDecimalChange(event) {
 		this.setState({
 			integer_value: event.target.value,
 			running: this.state.running,
-			button_title: this.state.button_title,
+			start_pause_button_title: this.state.start_pause_button_title,
 		});
 	}
 
@@ -122,14 +130,14 @@ class App extends React.Component {
 			this.setState({
 				integer_value: this.state.integer_value,
 				running: false,
-				button_title: "Start Counting",
+				start_pause_button_title: "Start Counting",
 			});
 			clearInterval(this.intervalHandle);
 		} else {
 			this.setState({
 				integer_value: this.state.integer_value,
 				running: true,
-				button_title: "Pause Counting",
+				start_pause_button_title: "Pause Counting",
 			});
 			this.intervalHandle = setInterval(this.handleInterval, 1000);
 		}
@@ -241,7 +249,8 @@ class App extends React.Component {
 
 			</div>
 			<div class="centerIt" id="buttons">
-			<button class="btn btn-success" onClick={this.handleStartPause}>{this.state.button_title}</button>
+			<button class="btn btn-success" onClick={this.handleStartPause}>{this.state.start_pause_button_title}</button>
+			<button class="btn" onClick={this.handleReset}>{this.state.reset_button_title}</button>
 			</div>
 		</div>
 		);
