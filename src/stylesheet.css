@@ -8,6 +8,13 @@
     justify-content: center;
     vertical-align: middle;
 }
+
+.q
+{
+	font-family: "Courier New";
+	font-size: 6em;
+}
+
 #centerTitle {
     display: flex;
     justify-content: center;
