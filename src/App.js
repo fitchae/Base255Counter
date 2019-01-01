@@ -73,6 +73,17 @@ class Dropdown extends React.Component {
 class App extends React.Component {
 	constructor(props) {
 		super(props)
+
+		this.oq1 = 0;
+		this.oq2 = 0;
+		this.oq3 = 0;
+		this.oq4 = 0;
+
+		this.q1 = 0;
+		this.q2 = 0;
+		this.q3 = 0;
+		this.q4 = 0;
+
 		this.state = {
 			integer_value: 250,
 			start_pause_button_title: "Start Counting",
@@ -144,11 +155,18 @@ class App extends React.Component {
 	}	
 	handleInterval() {
 		var current_value = 0;
+		var next_value = 0;
 		if (this.state.integer_value !== '') {
 			current_value = parseInt(this.state.integer_value,10);
 		}
+
+		next_value = current_value + 1;
+		if (next_value >= 4294967295) {
+			next_value = 0;
+		}
+
 		this.setState({
-			integer_value: current_value + 1
+			integer_value: next_value,
 		})
 	}
 
@@ -173,46 +191,60 @@ class App extends React.Component {
 	}
 
 	render() {
-		var base = parseInt(this.state.selected_base, 10)
-		var value = parseInt(this.state.integer_value, 10)
-		var q1 = ((value/Math.pow(base, 3)) % base);
-		var q2 = ((value/Math.pow(base, 2)) % base);
-		var q3 = ((value/Math.pow(base, 1)) % base);
-		var q4 = (value % base);
 
-		/*
-		console.log("q1:" + q1)
-		console.log("q2:" + q2)
-		console.log("q3:" + q3)
-		console.log("q4:" + q4)
-		*/
+		var base = parseInt(this.state.selected_base, 10)
+		var value = parseInt(this.state.integer_value,10);
+
+		this.oq1 = this.q1;
+		this.oq2 = this.q2;
+		this.oq3 = this.q3;
+		this.oq4 = this.q4;
+
+		this.q1 = ((value/Math.pow(base, 3)) % base);
+		this.q2 = ((value/Math.pow(base, 2)) % base);
+		this.q3 = ((value/Math.pow(base, 1)) % base);
+		this.q4 = (value % base);
+
 		/*
 		 * This is to correct for the absurd behavior
 		 * of parseInt
 		 */
-		if (q1 < 1.0) {
-			q1 = 0;
+		if (this.q1 < 1.0) {
+			this.q1 = 0;
 		}
-		if (q2 < 1.0) {
-			q2 = 0;
+		if (this.q2 < 1.0) {
+			this.q2 = 0;
 		}
-		if (q3 < 1.0) {
-			q3 = 0;
+		if (this.q3 < 1.0) {
+			this.q3 = 0;
 		}
-		if (q4 < 1.0) {
-			q4 = 0;
+		if (this.q4 < 1.0) {
+			this.q4 = 0;
 		}
-		/*
-		console.log("q1:" + q1)
-		console.log("q2:" + q2)
-		console.log("q3:" + q3)
-		console.log("q4:" + q4)
-		*/
-		q1 = parseInt(q1, 10);
-		q2 = parseInt(q2, 10);
-		q3 = parseInt(q3, 10);
-		q4 = parseInt(q4, 10);
 
+		this.q1 = parseInt(this.q1, 10);
+		this.q2 = parseInt(this.q2, 10);
+		this.q3 = parseInt(this.q3, 10);
+		this.q4 = parseInt(this.q4, 10);
+
+		var q1class = "centerIt q col-sm-2 ";
+		var q2class = "centerIt q col-sm-2 ";
+		var q3class = "centerIt q col-sm-2 ";
+		var q4class = "centerIt q col-sm-2 ";
+
+		if (this.q1 !== this.oq1) {
+			q1class += "changed";
+		}
+		if (this.q2 !== this.oq2) {
+			q2class += "changed";
+		}
+		if (this.q3 !== this.oq3) {
+			q3class += "changed";
+		}
+		if (this.q4 !== this.oq4) {
+			q4class += "changed";
+		}
+			
 		return(
 		<div>
 			<h1 id="centerTitle">Base {this.state.selected_base} Counter</h1>
@@ -225,26 +257,26 @@ class App extends React.Component {
 {/*		I'd like a newline here. */} is
 			</div>
 			<div class="row">
-			<div class="centerIt col-sm-2" id="q1">
-			<p>{this.format(q1, base)}</p>
+			<div class={q1class} id="q1">
+			<p>{this.format(this.q1, this.state.selected_base)}</p>
 			</div>
 			<div class="centerIt col-sm-1">
 			.
 			</div>
-			<div class="centerIt col-sm-2" id="q2">
-			<p>{this.format(q2, base)}</p>
+			<div class={q2class} id="q2">
+			<p>{this.format(this.q2, this.state.base)}</p>
 			</div>
 			<div class="centerIt col-sm-1">
 			    .
 			</div>
-			<div class="centerIt col-sm-2" id="q3">
-			<p>{this.format(q3, base)}</p>
+			<div class={q3class} id="q3">
+			<p>{this.format(this.q3, this.state.base)}</p>
 			</div>
 			<div class="centerIt col-sm-1">
 			    .
 			</div>
-			<div class="centerIt col-sm-2" id="q4">
-			<p>{this.format(q4, base)}</p>
+			<div class={q4class} id="q4">
+			<p>{this.format(this.q4, this.state.base)}</p>
 			</div>
 
 			</div>

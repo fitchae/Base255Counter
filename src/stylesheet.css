@@ -18,6 +18,10 @@
     text-align: center;
 }
 
+.changed {
+	color: red;
+}
+
 .wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
