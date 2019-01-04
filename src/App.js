@@ -248,32 +248,33 @@ class App extends React.Component {
 		return(
 		<div>
 			<h1 id="centerTitle">Base {this.state.selected_base} Counter</h1>
-			<div class="centerIt" id="number">
-			Decimal <input class="form-control" id="numberValue" type="text" value={this.state.integer_value} onChange={this.handleDecimalChange} />
-{/*		I'd like a newline here. */}
-			in base <Dropdown
+			<div class="centerIt text" id="number">
+			Decimal &nbsp;
+			<input class="form-control" id="numberValue" type="text" value={this.state.integer_value} onChange={this.handleDecimalChange} />
+			&nbsp;in base&nbsp; 
+			<Dropdown
             list={this.state.base}
             resetThenSet={this.resetThenSet}/>
-{/*		I'd like a newline here. */} is
+			&nbsp;is:
 			</div>
 			<div class="row">
 			<div class={q1class} id="q1">
 			<p>{this.format(this.q1, this.state.selected_base)}</p>
 			</div>
-			<div class="centerIt col-sm-1">
+			<div class="bottom col-sm-1">
 			.
 			</div>
 			<div class={q2class} id="q2">
 			<p>{this.format(this.q2, this.state.base)}</p>
 			</div>
-			<div class="centerIt col-sm-1">
-			    .
+			<div class="bottom col-sm-1">
+			.
 			</div>
 			<div class={q3class} id="q3">
 			<p>{this.format(this.q3, this.state.base)}</p>
 			</div>
-			<div class="centerIt col-sm-1">
-			    .
+			<div class="bottom col-sm-1">
+			.
 			</div>
 			<div class={q4class} id="q4">
 			<p>{this.format(this.q4, this.state.base)}</p>
@@ -282,7 +283,7 @@ class App extends React.Component {
 			</div>
 			<div class="centerIt" id="buttons">
 			<button class="btn btn-success" onClick={this.handleStartPause}>{this.state.start_pause_button_title}</button>
-			<button class="btn" onClick={this.handleReset}>{this.state.reset_button_title}</button>
+			<button class="btn btn-warning" onClick={this.handleReset}>{this.state.reset_button_title}</button>
 			</div>
 		</div>
 		);

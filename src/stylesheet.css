@@ -9,12 +9,29 @@
     vertical-align: middle;
 }
 
+.text{
+  display: flex;
+  vertical-align: text-bottom;
+}
+
 .q
 {
 	font-family: "Courier New";
 	font-size: 6em;
 }
 
+.bottom{
+  padding-top: 100px;
+}
+
+.dd-header{
+  height: 34px;
+  width: 100px;
+}
+
+.btn-warning{
+  margin-left: 10px;
+}
 #centerTitle {
     display: flex;
     justify-content: center;
@@ -23,6 +40,10 @@
 #numberValue {
     width: 150px;
     text-align: center;
+}
+
+#text{
+  display: block;
 }
 
 .changed {
@@ -44,7 +65,6 @@
       -ms-user-select: none;
           user-select: none;
   position: relative;
-  width: 222px;
 }
 .dd-header {
   display: -webkit-box;
